@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+watched=$(date)
+if [[ -n $1 ]]; then
+currentVideoTimestamp=$1
+else
+  read -p 'Enter current video timestamp: ' $currentVideoTimestamp
+fi
+
+echo -e "watched at $watched\nCurrent video timestamp $currentVideoTimestamp" >> daveVideo.txt
+
+
+
+
+

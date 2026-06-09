@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+itExist(){
+  if [[ -f $1 ]]; then
+  echo "File already exist... script exit safely"
+    exit 1
+else
+  return 0
+  fi
+}
+
+makeExec(){
+  if touch "$fileName" && chmod +x "$fileName"; then
+  return 0
+else
+  return 1;
+  fi
+}
+
+if [[ -n $1 ]];then 
+ fileName=$1
+else 
+  # -p to prompt and -r to not let any \ escape
+  read -pr "insert file name: "fileName
+fi
+
+
+itExist "$fileName"
+
+if makeExec; then
+  echo "#!/usr/bin/env bash" >> $fileName
+  echo "$fileName successfully created"
+else
+  echo "failed to create $fileName"
+fi
+
+
