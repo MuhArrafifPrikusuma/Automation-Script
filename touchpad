@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ $1 == "on" ]]; then
+  sed -i '\|off // off|c\tap // on' ~/.config/niri/config.kdl
+elif [[ $1 == "off" ]]; then
+  sed -i '\|tap // on|c\off // off' ~/.config/niri/config.kdl
+fi
